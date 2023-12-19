@@ -68,7 +68,6 @@ prop_coditancament
 #Codi durada 
 summary(numeradoremb$durada)
 
-####TE HAS QUEDADO AQUI 
 
 #Intervalos de confianza 
 # Datos de las proporciones
