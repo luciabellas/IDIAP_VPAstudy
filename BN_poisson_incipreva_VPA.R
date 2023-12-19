@@ -34,30 +34,6 @@ nb_model <- glm.nb(n_cases ~ tendencia + medida + tendencia_post +
 # Resumen del modelo
 summary(nb_model)
 
-# Coefficients:
-#   Estimate Std. Error z value Pr(>|z|)    
-# (Intercept)    -6.323870   0.084550 -74.794  < 2e-16 ***
-# tendencia       0.007091   0.004277   1.658   0.0973 .  
-# medida          0.080694   0.106217   0.760   0.4474    
-# tendencia_post -0.027349   0.004833  -5.659 1.52e-08 ***
-#   ---
-#   Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-# 
-# (Dispersion parameter for Negative Binomial(446208.8) family taken to be 1)
-# 
-# Null deviance: 157.838  on 95  degrees of freedom
-# Residual deviance:  42.004  on 92  degrees of freedom
-# AIC: 465.82
-# 
-# Number of Fisher Scoring iterations: 1
-# 
-# 
-# Theta:  446209 
-# Std. Err.:  5723159 
-# Warning while fitting theta: iteration limit reached 
-# 
-# 2 x log-likelihood:  -455.817 
-
 #MODELO DE POISSON 
 poisson_model <- glm(n_cases ~ tendencia + medida + tendencia_post + 
                        offset(log(n_population)), 
@@ -66,29 +42,7 @@ poisson_model <- glm(n_cases ~ tendencia + medida + tendencia_post +
 
 summary(poisson_model)
 # 
-# Call:
-#   glm(formula = n_cases ~ tendencia + medida + tendencia_post + 
-#         offset(log(n_population)), family = poisson(link = "log"), 
-#       data = prevVPA)
 # 
-# Coefficients:
-#   Estimate Std. Error z value Pr(>|z|)    
-# (Intercept)    -6.323870   0.084548 -74.796  < 2e-16 ***
-#   tendencia       0.007091   0.004277   1.658   0.0973 .  
-# medida          0.080694   0.106215   0.760   0.4474    
-# tendencia_post -0.027349   0.004832  -5.659 1.52e-08 ***
-#   ---
-#   Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-# 
-# (Dispersion parameter for poisson family taken to be 1)
-# 
-# Null deviance: 157.842  on 95  degrees of freedom
-# Residual deviance:  42.005  on 92  degrees of freedom
-# AIC: 463.81
-# 
-# Number of Fisher Scoring iterations: 4
-
-# Regresión binomial negativa ajustado llamado nb_model
 # Calcular AIC (Criterio de informacion de Akaike)
 AIC_nb <- AIC(nb_model)
 # Calcular BIC
